@@ -6,7 +6,7 @@
     @endif
     @vite(['resources/css/'.$css])
 </x-head>
-<body class="bg-main-bg h-full flex flex-col">
+<body class="h-full flex flex-col">
 <main class="flex-1">
     {{ $slot }}
 </main>
