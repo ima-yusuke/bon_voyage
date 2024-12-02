@@ -1,17 +1,13 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+    <div class="py-12 flex flex-wrap gap-4 justify-center items-center">
+        <x-dash-menu link="/" icon="fa-cow" title="牛登録"/>
+        <x-dash-menu link="/ranch" icon="fa-tree" title="牧場登録"/>
+        <x-dash-menu link="/" icon="fa-house" title="牛舎登録"/>
+        <x-dash-menu link="/" icon="fa-heart-circle-plus" title="ステータス登録"/>
+        <x-dash-menu link="/" icon="fa-mars" title="父登録"/>
+        <x-dash-menu link="/" icon="fa-venus" title="母登録"/>
+        <x-dash-menu link="/" icon="fa-moon" title="祖父登録"/>
+        <x-dash-menu link="/" icon="fa-sun" title="祖母登録"/>
     </div>
 </x-app-layout>
+
