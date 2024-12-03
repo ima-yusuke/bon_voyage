@@ -1,3 +1,5 @@
+import "flowbite";
+
 const SearchAddressBtn = document.getElementById('search_address_btn');
 
 async function fetchAddress() {
