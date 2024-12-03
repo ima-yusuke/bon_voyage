@@ -10,26 +10,25 @@
                 </p>
             </article>
 
-
             {{--ホテル入力フォーム--}}
             <section class="w-full flex flex-col justify-center items-center gap-4">
                 <form action="" class="w-full flex flex-col gap-4">
 
-                    <x-dash-form-component name="宿泊施設名" flag={{true}}>
-                        <x-dash-form-input type="text" name="宿泊施設名"/>
+                    <x-dash-form-component title="宿泊施設名" flag={{true}}>
+                        <x-dash-form-input type="text" title="宿泊施設名"/>
                     </x-dash-form-component>
 
-                    <x-dash-form-component name="イメージ画像" flag={{true}}>
+                    <x-dash-form-component title="イメージ画像" flag={{true}}>
                         <p>※一覧に表示されます。（外観画像など）</p>
                         <x-dash-form-input type="file"/>
                     </x-dash-form-component>
 
-                    <x-dash-form-component name="PR画像" flag={{false}}>
+                    <x-dash-form-component title="PR画像" flag={{false}}>
                         <p>※お部屋やお食事会場等</p>
                         <x-dash-form-input type="file"/>
                     </x-dash-form-component>
 
-                    <x-dash-form-component name="郵便番号" flag={{true}}>
+                    <x-dash-form-component title="郵便番号" flag={{true}}>
                         <div class="flex gap-4">
                             <input type="text" id="zipcode" class="w-[70%] border border-solid border-gray-300 rounded-md p-2"
                                    placeholder="例: 100-0001"
@@ -38,18 +37,47 @@
                                 住所検索
                             </button>
                         </div>
-
                     </x-dash-form-component>
-                    <div>
-                        <label for="address" class="block font-bold">住所</label>
-                        <input
-                            type="text"
-                            id="address"
-                            class="w-full border border-solid border-gray-300 rounded-md p-2"
-                            placeholder="住所が自動入力されます"
-                            readonly
+
+                    <x-dash-form-component title="都道府県" flag={{true}}>
+                        <x-dash-form-input id="pref_input" type="text" title="住所が自動入力されます"/>
+                    </x-dash-form-component>
+
+                    <x-dash-form-component title="市区町村" flag={{true}}>
+                        <x-dash-form-input id="city_input" type="text" title="住所が自動入力されます"/>
+                    </x-dash-form-component>
+
+                    <x-dash-form-component title="番地" flag={{true}}>
+                        <x-dash-form-input id="house_num_input" type="text" title="例:1234-5"/>
+                    </x-dash-form-component>
+
+                    <x-dash-form-component title="アクセス" flag={{false}}>
+                        <x-dash-form-input type="text" title="例:東京駅徒歩5分"/>
+                    </x-dash-form-component>
+
+                    <x-dash-form-component title="お電話番号" flag={{true}}>
+                        <x-dash-form-input type="tel" title="例: 012-234-5678"/>
+                    </x-dash-form-component>
+
+                    <x-dash-form-component title="FAX" flag={{true}}>
+                        <x-dash-form-input type="tel" title="例: 012-234-9876"/>
+                    </x-dash-form-component>
+
+                    <x-dash-form-component title="夕食形式" flag={{true}}>
+                        <p class="pb-2">※複数選択可</p>
+                        <x-dash-form-checkbox name="dinner_meal_option"
+                            :mealData="[['value' => 1, 'title' => 'ビュッフェ'],['value' => 2, 'title' => '卓盛り'],['value' => 3, 'title' => '個食'],
+                                       ['value' => 4, 'title' => 'テーブルマナー'],['value' => 5, 'title' => '提供不可']]"
                         />
-                    </div>
+                    </x-dash-form-component>
+
+                    <x-dash-form-component title="朝食形式" flag={{true}}>
+                        <p class="pb-2">※複数選択可</p>
+                        <x-dash-form-checkbox name="morning_meal_option"
+                                              :mealData="[['value' => 1, 'title' => 'ビュッフェ'],['value' => 2, 'title' => '卓盛り'],['value' => 3, 'title' => '個食'],
+                                      ['value' => 4, 'title' => '提供不可']]"
+                        />
+                    </x-dash-form-component>
                 </form>
             </section>
         </div>
