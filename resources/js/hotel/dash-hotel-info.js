@@ -2,12 +2,13 @@ const SearchAddressBtn = document.getElementById('search_address_btn');
 
 async function fetchAddress() {
     const zipcodeInput = document.getElementById('zipcode');
-    const addressInput = document.getElementById('address');
-    const zipcode = zipcodeInput.value.replace(/-/g, ''); // ハイフンを除去
+    const prefInput = document.getElementById('pref_input');
+    const cityInput = document.getElementById('city_input');
+    let zipcode = zipcodeInput.value.replace(/-/g, ''); // ハイフンを除去
 
     // 郵便番号が7桁でない場合は処理を中断
     if (zipcode.length !== 7) {
-        addressInput.value = "";
+        alert('郵便番号は7桁で入力してください');
         return;
     }
 
@@ -17,14 +18,16 @@ async function fetchAddress() {
         const data = await response.json();
 
         if (data.results) {
-            const address = `${data.results[0].address1} ${data.results[0].address2} ${data.results[0].address3}`;
-            addressInput.value = address; // 住所を入力欄に設定
+            prefInput.value = data.results[0].address1; // 都道府県をセット
+            cityInput.value = data.results[0].address2 + data.results[0].address3; // 市区町村をセット
         } else {
-            addressInput.value = "住所が見つかりません";
+            prefInput.value = "住所が見つかりません";
+            cityInput.value = "住所が見つかりません";
         }
     } catch (error) {
         console.error('住所検索エラー:', error);
-        addressInput.value = "エラーが発生しました";
+        prefInput.value = "エラーが発生しました";
+        cityInput.value = "エラーが発生しました";
     }
 }
 
