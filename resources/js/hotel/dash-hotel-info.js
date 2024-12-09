@@ -2,6 +2,7 @@ import "flowbite";
 
 const SearchAddressBtn = document.getElementById('search_address_btn');
 
+// 郵便番号にて住所検索
 async function fetchAddress() {
     const zipcodeInput = document.getElementById('zipcode');
     const prefInput = document.getElementById('pref_input');
@@ -35,4 +36,24 @@ async function fetchAddress() {
 
 SearchAddressBtn.addEventListener('click', fetchAddress);
 
+// 食事会場追加ボタン
+document.getElementById('add_venue_btn').addEventListener('click', function () {
+    // 元の <aside> 要素を取得
+    const originalAside = document.querySelector('#venue_container aside');
 
+    // <aside> をコピー
+    const clonedAside = originalAside.cloneNode(true);
+
+    // コピーした要素内の入力フィールドを初期化
+    const inputs = clonedAside.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.value = ''; // 入力値をリセット
+    });
+
+    // <button> 要素を取得
+    const addButton = document.getElementById('add_venue_btn');
+
+    // <button> の前にコピーした <aside> を挿入
+    const venueContainer = document.getElementById('venue_container');
+    venueContainer.insertBefore(clonedAside, addButton);
+});

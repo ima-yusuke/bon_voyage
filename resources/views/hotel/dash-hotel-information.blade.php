@@ -62,7 +62,7 @@
                             <x-dash-form-input type="text" title="例:東京駅徒歩5分"/>
                         </x-dash-form-component>
 
-                        <x-dash-form-component title="お電話番号" flag={{true}}>
+                        <x-dash-form-component title="電話番号" flag={{true}}>
                             <x-dash-form-input type="tel" title="例: 012-234-5678"/>
                         </x-dash-form-component>
 
@@ -88,8 +88,38 @@
                                       ['value' => 4, 'title' => '提供不可']]"
                             />
                         </x-dash-form-component>
-                    </article>
 
+                        <x-dash-form-component title="夕食時間" flag={{false}}>
+                            <aside class="flex items-center gap-4">
+                                <x-dash-form-input type="time" timeId="startDinnerTime"/>
+                                <p>から</p>
+                                <x-dash-form-input type="time" timeId="endDinnerTime"/>
+                                <p>まで</p>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="朝食時間" flag={{false}}>
+                            <aside class="flex items-center gap-4">
+                                <x-dash-form-input type="time" timeId="startMorningTime"/>
+                                <p>から</p>
+                                <x-dash-form-input type="time" timeId="endMorningTime"/>
+                                <p>まで</p>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="食事会場" flag={{false}}>
+                            <article id="venue_container" class="flex flex-col justify-center items-center w-full gap-6">
+                                <aside class="flex items-center gap-4 w-full">
+                                    <x-dash-form-input type="text" title="会場名" />
+                                    <x-dash-form-input type="number" title="最大収容人数" />
+                                </aside>
+                                <button id="add_venue_btn" type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+                                    会場追加
+                                </button>
+                            </article>
+
+                        </x-dash-form-component>
+                    </article>
                 </form>
             </section>
         </div>
