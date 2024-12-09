@@ -74,7 +74,7 @@
                     {{--お食事--}}
                     <article class="hidden flex flex-col gap-4" id="meal_info" role="tabpanel" aria-labelledby="meal_info-tab">
                         <x-dash-form-component title="夕食形式" flag={{true}}>
-                            <p class="pb-2">※複数選択可</p>
+                            <p>※複数選択可</p>
                             <x-dash-form-checkbox name="dinner_meal_option"
                                                   :mealData="[['value' => 1, 'title' => 'ビュッフェ'],['value' => 2, 'title' => '卓盛り'],['value' => 3, 'title' => '個食'],
                                        ['value' => 4, 'title' => 'テーブルマナー'],['value' => 5, 'title' => '提供不可']]"
@@ -82,7 +82,7 @@
                         </x-dash-form-component>
 
                         <x-dash-form-component title="朝食形式" flag={{true}}>
-                            <p class="pb-2">※複数選択可</p>
+                            <p>※複数選択可</p>
                             <x-dash-form-checkbox name="morning_meal_option"
                                                   :mealData="[['value' => 1, 'title' => 'ビュッフェ'],['value' => 2, 'title' => '卓盛り'],['value' => 3, 'title' => '個食'],
                                       ['value' => 4, 'title' => '提供不可']]"
@@ -113,11 +113,26 @@
                                     <x-dash-form-input type="text" title="会場名" />
                                     <x-dash-form-input type="number" title="最大収容人数" />
                                 </aside>
+                                <div id="venue_memo_container" class="flex flex-col gap-2 w-full">
+                                    <p>※備考欄</p>
+                                    <x-dash-form-input type="text" title="例: 300名様以上は1会場2回転にて対応" />
+                                </div>
                                 <button id="add_venue_btn" type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md">
                                     会場追加
                                 </button>
                             </article>
+                        </x-dash-form-component>
 
+                        <x-dash-form-component title="アレルギー対応" flag={{true}}>
+                            <x-dash-form-checkbox name="allergy"
+                                                  :mealData="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="ハラル食対応" flag={{true}}>
+                            <x-dash-form-checkbox name="halal"
+                                                  :mealData="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
+                            />
                         </x-dash-form-component>
                     </article>
                 </form>

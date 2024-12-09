@@ -50,10 +50,10 @@ document.getElementById('add_venue_btn').addEventListener('click', function () {
         input.value = ''; // 入力値をリセット
     });
 
-    // <button> 要素を取得
-    const addButton = document.getElementById('add_venue_btn');
+    // 備考欄要素を取得
+    const VenueMemoContainer = document.getElementById('venue_memo_container');
 
-    // <button> の前にコピーした <aside> を挿入
+    // 備考欄の前にコピーした <aside> を挿入
     const venueContainer = document.getElementById('venue_container');
-    venueContainer.insertBefore(clonedAside, addButton);
+    venueContainer.insertBefore(clonedAside, VenueMemoContainer);
 });
