@@ -17,7 +17,7 @@
                     {{--タブメニュー--}}
                     <div id="default-tab-content">
                         <x-dash-tab :menuData="[['id'=>'basic_info','title'=>'基本情報'],['id'=>'meal_info','title'=>'お食事'],['id'=>'floor_info','title'=>'宿泊条件']
-                        ,['id'=>'building_info','title'=>'館内情報']]"></x-dash-tab>
+                        ,['id'=>'building_info','title'=>'館内情報'] ,['id'=>'room_info','title'=>'お部屋']]"></x-dash-tab>
                     </div>
 
                     {{--基本情報--}}
@@ -177,13 +177,97 @@
 
                         <x-dash-form-component title="売店利用" flag={{true}}>
                             <x-dash-form-checkbox name="shop_option"
-                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可'],['value' => 3, 'title' => 'なし']]"
+                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可'],['value' => 3, 'title' => '無']]"
                             />
                         </x-dash-form-component>
 
                         <x-dash-form-component title="ゲームセンター利用" flag={{true}}>
                             <x-dash-form-checkbox name="game_option"
-                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可'],['value' => 3, 'title' => 'なし']]"
+                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可'],['value' => 3, 'title' => '無']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="お酒自販機" flag={{true}}>
+                            <x-dash-form-checkbox name="alcohol_option"
+                                                  :dataArray="[['value' => 1, 'title' => '有（停止可）'],['value' => 2, 'title' => '有（停止不可）'],['value' => 3, 'title' => '無']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="タバコ自販機" flag={{true}}>
+                            <x-dash-form-checkbox name="tobacco_option"
+                                                  :dataArray="[['value' => 1, 'title' => '有（停止可）'],['value' => 2, 'title' => '有（停止不可）'],['value' => 3, 'title' => '無']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="レクリエーション会場" flag={{true}}>
+                            <x-dash-form-checkbox name="recreation_option"
+                                                  :dataArray="[['value' => 1, 'title' => '有'],['value' => 2, 'title' => '無']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="貴重品預かり" flag={{true}}>
+                            <x-dash-form-checkbox name="valuables_option"
+                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="エレベーター" flag={{true}}>
+                            <x-dash-form-checkbox name="elevator_option"
+                                                  :dataArray="[['value' => 1, 'title' => '有（全員利用可）'],['value' => 2, 'title' => '有（車椅子など特定の生徒のみ）'],['value' => 3, 'title' => '利用不可']
+                                                    ,['value' => 4, 'title' => '無']]"
+                            />
+                        </x-dash-form-component>
+                    </article>
+
+
+                    {{--お部屋--}}
+                    <article class="hidden flex flex-col gap-4" id="room_info" role="tabpanel" aria-labelledby="room_info-tab">
+
+                        <x-dash-form-component title="定員" flag={{true}}>
+                            <aside class="flex items-center gap-4">
+                                <x-dash-form-input type="number" title="2"/>
+                                <p class="flex-shrink-0">人から</p>
+                                <x-dash-form-input type="number" title="3"/>
+                                <p class="flex-shrink-0">人まで</p>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="付属品" flag={{true}}>
+                            <x-dash-form-checkbox name="amenities_option"
+                                                  :dataArray="[['value' => 1, 'title' => 'バスタオル'],['value' => 2, 'title' => 'フェイスタオル'],['value' => 3, 'title' => 'シャンプー']
+                                                    ,['value' => 4, 'title' => 'ボディソープ'],['value' => 5, 'title' => '歯ブラシ'],['value' => 6, 'title' => 'ドライヤー'],['value' => 7, 'title' => 'ポット']
+                                                    ,['value' => 8, 'title' => '冷蔵庫'],['value' => 9, 'title' => '金庫'],['value' => 10, 'title' => '該当なし']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="内線利用" flag={{true}}>
+                            <x-dash-form-checkbox name="internal_option"
+                                                  :dataArray="[['value' => 1, 'title' => '可（カット可）'],['value' => 2, 'title' => '可（カット不可）'],['value' => 3, 'title' => '無']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="外線利用" flag={{true}}>
+                            <x-dash-form-checkbox name="external_option"
+                                                  :dataArray="[['value' => 1, 'title' => '可（カット可）'],['value' => 2, 'title' => '可（カット不可）'],['value' => 3, 'title' => '無']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="鍵タイプ" flag={{true}}>
+                            <x-dash-form-checkbox name="key_option"
+                                                  :dataArray="[['value' => 1, 'title' => '金属製（オートロック有）'],['value' => 2, 'title' => '金属製（オートロック無）'],['value' => 3, 'title' => 'カードキー（オートロック有）']
+                                                   ,['value' => 4, 'title' => 'カードキー（オートロック無）'],['value' => 5, 'title' => 'その他']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="部屋長・班長会議" flag={{true}}>
+                            <x-dash-form-checkbox name="meeting_option"
+                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
+                            />
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="モーニングコール" flag={{true}}>
+                            <x-dash-form-checkbox name="morning_call_option"
+                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
                             />
                         </x-dash-form-component>
                     </article>
