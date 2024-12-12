@@ -1,12 +1,12 @@
 import "flowbite";
 
-const SearchAddressBtn = document.getElementById('search_address_btn');
+const SearchAddressBtn = document.getElementsByClassName('searchAddress');
 
 // 郵便番号にて住所検索
-async function fetchAddress() {
-    const zipcodeInput = document.getElementById('zipcode');
-    const prefInput = document.getElementById('pref_input');
-    const cityInput = document.getElementById('city_input');
+async function fetchAddress(place) {
+    const zipcodeInput = document.getElementById(`zipcode_${place}`);
+    const prefInput = document.getElementById(`${place}_pref_input`);
+    const cityInput = document.getElementById(`${place}_city_input`);
     let zipcode = zipcodeInput.value.replace(/-/g, ''); // ハイフンを除去
 
     // 郵便番号が7桁でない場合は処理を中断
@@ -34,7 +34,9 @@ async function fetchAddress() {
     }
 }
 
-SearchAddressBtn.addEventListener('click', fetchAddress);
+for (let i = 0; i < SearchAddressBtn.length; i++) {
+    SearchAddressBtn[i].addEventListener('click', () => fetchAddress(SearchAddressBtn[i].id));
+}
 
 // 食事会場追加ボタン
 document.getElementById('add_venue_btn').addEventListener('click', function () {

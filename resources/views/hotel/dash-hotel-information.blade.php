@@ -13,11 +13,10 @@
             {{--ホテル入力フォーム--}}
             <section class="w-full flex flex-col justify-center items-center gap-4">
                 <form action="" class="w-full flex flex-col gap-4">
-
                     {{--タブメニュー--}}
                     <div id="default-tab-content">
                         <x-dash-tab :menuData="[['id'=>'basic_info','title'=>'基本情報'],['id'=>'meal_info','title'=>'お食事'],['id'=>'floor_info','title'=>'宿泊条件']
-                        ,['id'=>'building_info','title'=>'館内情報'] ,['id'=>'room_info','title'=>'お部屋']]"></x-dash-tab>
+                        ,['id'=>'building_info','title'=>'館内情報'] ,['id'=>'room_info','title'=>'お部屋'],['id'=>'other_info','title'=>'その他']]"></x-dash-tab>
                     </div>
 
                     {{--基本情報--}}
@@ -28,39 +27,22 @@
 
                         <x-dash-form-component title="イメージ画像" flag={{true}}>
                             <p>※一覧に表示されます。（外観画像など）</p>
-                            <x-dash-form-input type="file"/>
+                            <x-dash-form-input type="file" role="image"/>
                         </x-dash-form-component>
 
                         <x-dash-form-component title="PR画像" flag={{false}}>
                             <p>※お部屋やお食事会場等</p>
-                            <x-dash-form-input type="file"/>
+                            <x-dash-form-input type="file" role="image"/>
                         </x-dash-form-component>
 
                         <x-dash-form-component title="最大受入人数" flag={{true}}>
                             <x-dash-form-input type="number" title="320"/>
                         </x-dash-form-component>
 
-                        <x-dash-form-component title="郵便番号" flag={{true}}>
-                            <div class="flex gap-4">
-                                <input type="text" id="zipcode" class="w-[70%] border border-solid border-gray-300 rounded-md p-2"
-                                       placeholder="例: 100-0001"
-                                />
-                                <button id="search_address_btn" type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md">
-                                    住所検索
-                                </button>
-                            </div>
-                        </x-dash-form-component>
-
-                        <x-dash-form-component title="都道府県" flag={{true}}>
-                            <x-dash-form-input id="pref_input" type="text" title="住所が自動入力されます"/>
-                        </x-dash-form-component>
-
-                        <x-dash-form-component title="市区町村" flag={{true}}>
-                            <x-dash-form-input id="city_input" type="text" title="住所が自動入力されます"/>
-                        </x-dash-form-component>
-
-                        <x-dash-form-component title="番地" flag={{true}}>
-                            <x-dash-form-input id="house_num_input" type="text" title="例:1234-5"/>
+                        <x-dash-form-component title="住所" flag={{true}}>
+                            <aside class="flex flex-col justify-center gap-4">
+                                <x-zipcode place="hotel"></x-zipcode>
+                            </aside>
                         </x-dash-form-component>
 
                         <x-dash-form-component title="アクセス" flag={{false}}>
@@ -73,6 +55,10 @@
 
                         <x-dash-form-component title="FAX" flag={{true}}>
                             <x-dash-form-input type="tel" title="例: 012-234-9876"/>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="公式サイトURL" flag={{false}}>
+                            <x-dash-form-input type="text" title="例: https://www.google.com"/>
                         </x-dash-form-component>
                     </article>
 
@@ -219,7 +205,6 @@
                         </x-dash-form-component>
                     </article>
 
-
                     {{--お部屋--}}
                     <article class="hidden flex flex-col gap-4" id="room_info" role="tabpanel" aria-labelledby="room_info-tab">
 
@@ -269,6 +254,93 @@
                             <x-dash-form-checkbox name="morning_call_option"
                                                   :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
                             />
+                        </x-dash-form-component>
+                    </article>
+
+                    {{--その他--}}
+                    <article class="hidden flex flex-col gap-4" id="other_info" role="tabpanel" aria-labelledby="other_info-tab">
+
+                        <x-dash-form-component title="大型バス駐車場" flag={{true}}>
+                            <aside class="flex items-center gap-4">
+                                <x-dash-form-input type="number" title="例: 2"/>
+                                <p class="flex-shrink-0">台</p>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="救急病院" flag={{true}}>
+                            <aside class="flex flex-col justify-center gap-4">
+
+                                <div class="flex flex-col gap-2">
+                                    <p>【施設名】</p>
+                                    <x-dash-form-input type="text" title="例: 〇〇病院"/>
+                                </div>
+
+                                <x-zipcode place="hospital"></x-zipcode>
+
+                                <div>
+                                    <p>【電話番号】</p>
+                                    <x-dash-form-input type="tel" title="例: 012-234-5678"/>
+                                </div>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="管轄消防署" flag={{true}}>
+                            <aside class="flex flex-col justify-center gap-4">
+
+                                <div class="flex flex-col gap-2">
+                                    <p>【施設名】</p>
+                                    <x-dash-form-input type="text" title="例: 〇〇消防署"/>
+                                </div>
+
+                                <x-zipcode place="fire_station"></x-zipcode>
+
+                                <div>
+                                    <p>【電話番号】</p>
+                                    <x-dash-form-input type="tel" title="例: 012-234-5678"/>
+                                </div>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="管轄警察署" flag={{true}}>
+                            <aside class="flex flex-col justify-center gap-4">
+
+                                <div class="flex flex-col gap-2">
+                                    <p>【施設名】</p>
+                                    <x-dash-form-input type="text" title="例: 〇〇警察署"/>
+                                </div>
+
+                                <x-zipcode place="police"></x-zipcode>
+
+                                <div>
+                                    <p>【電話番号】</p>
+                                    <x-dash-form-input type="tel" title="例: 012-234-5678"/>
+                                </div>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="管轄保健所" flag={{true}}>
+                            <aside class="flex flex-col justify-center gap-4">
+
+                                <div class="flex flex-col gap-2">
+                                    <p>【施設名】</p>
+                                    <x-dash-form-input type="text" title="例: 〇〇保健所"/>
+                                </div>
+
+                                <x-zipcode place="health_center"></x-zipcode>
+
+                                <div>
+                                    <p>【電話番号】</p>
+                                    <x-dash-form-input type="tel" title="例: 012-234-5678"/>
+                                </div>
+                            </aside>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="教育旅行用\nパンフレット" flag={{false}}>
+                            <x-dash-form-input type="file" role="pdf"/>
+                        </x-dash-form-component>
+
+                        <x-dash-form-component title="その他PRや\n注意事項等" flag={{false}}>
+                            <x-dash-form-input type="text" title="自家発電システムを完備しており、災害時にも安心です！"/>
                         </x-dash-form-component>
                     </article>
                 </form>

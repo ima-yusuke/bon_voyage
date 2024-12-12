@@ -4,7 +4,7 @@
         @if($flag)
             <p class="text-white text-sm bg-red-500 px-2 py-1 rounded-md border-2 border-solid border-red-500">必須</p>
         @endif
-        <p>{{$title}}</p>
+            <p>{!! nl2br(e(str_replace('\n', "\n", $title))) !!}</p>
     </aside>
 
     {{--右側--}}
