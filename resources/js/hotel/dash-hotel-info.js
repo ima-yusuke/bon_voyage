@@ -59,3 +59,30 @@ document.getElementById('add_venue_btn').addEventListener('click', function () {
     const venueContainer = document.getElementById('venue_container');
     venueContainer.insertBefore(clonedAside, VenueMemoContainer);
 });
+
+const NotAvailableInput = document.getElementsByClassName('notAvailable');
+
+for (let i = 0; i < NotAvailableInput.length; i++) {
+    NotAvailableInput[i].addEventListener('change', function () {
+
+        // "提供不可"のcheckboxのチェックが外れた時
+        if(NotAvailableInput[i].checked===false){
+            return;
+        }
+
+        // "提供不可"のcheckboxのチェックが入った時、他のcheckboxのチェックを外す
+        let inputContainer = NotAvailableInput[i].parentNode.parentNode;
+        for (let j = 0; j < inputContainer.children.length-1; j++) {
+            if (inputContainer.children[j].children[0].classList.contains('notAvailable')) {
+                continue;
+            }else{
+                inputContainer.children[j].children[0].checked = false;
+            }
+
+            // "提供不可"のチェックが入った状態で他のチェックボックスを選択した場合、"提供不可"のチェックを外す
+            inputContainer.children[j].children[0].addEventListener('change', function () {
+                NotAvailableInput[i].checked = false;
+            });
+        }
+    });
+}
