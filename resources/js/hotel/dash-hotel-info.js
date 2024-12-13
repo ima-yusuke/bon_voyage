@@ -60,18 +60,26 @@ document.getElementById('add_venue_btn').addEventListener('click', function () {
     venueContainer.insertBefore(clonedAside, VenueMemoContainer);
 });
 
+// "提供不可"のcheckboxのチェックが変更された時の処理
 const NotAvailableInput = document.getElementsByClassName('notAvailable');
+const MealDetailContainer = document.getElementById('meal_detail_container');
+let hideCount = 0;
 
 for (let i = 0; i < NotAvailableInput.length; i++) {
     NotAvailableInput[i].addEventListener('change', function () {
 
+        let inputContainer = NotAvailableInput[i].parentNode.parentNode;
+        let mealStyleContainer = inputContainer.parentNode.parentNode;
+
         // "提供不可"のcheckboxのチェックが外れた時
         if(NotAvailableInput[i].checked===false){
+            hideCount--;
+            ToggleMealTime(NotAvailableInput[i],mealStyleContainer,"flex");
+            CheckNotAvailableInput(false,NotAvailableInput[i]);
             return;
         }
 
         // "提供不可"のcheckboxのチェックが入った時、他のcheckboxのチェックを外す
-        let inputContainer = NotAvailableInput[i].parentNode.parentNode;
         for (let j = 0; j < inputContainer.children.length-1; j++) {
             if (inputContainer.children[j].children[0].classList.contains('notAvailable')) {
                 continue;
@@ -81,8 +89,39 @@ for (let i = 0; i < NotAvailableInput.length; i++) {
 
             // "提供不可"のチェックが入った状態で他のチェックボックスを選択した場合、"提供不可"のチェックを外す
             inputContainer.children[j].children[0].addEventListener('change', function () {
+                CheckNotAvailableInput(false,NotAvailableInput[i]);
                 NotAvailableInput[i].checked = false;
+                ToggleMealTime(NotAvailableInput[i],mealStyleContainer,"flex");
             });
         }
+
+        ToggleMealTime(NotAvailableInput[i],mealStyleContainer,"none");
+        CheckNotAvailableInput(true,NotAvailableInput[i]);
     });
+}
+
+function ToggleMealTime(NotAvailableInput,mealStyleContainer,flag){
+    if(NotAvailableInput.name==="dinner_meal_option"){
+        let dinnerTimeContainer = mealStyleContainer.nextElementSibling;
+        dinnerTimeContainer.style.display = flag;
+    }else if(NotAvailableInput.name==="morning_meal_option"){
+        let morningTimeContainer = mealStyleContainer.nextElementSibling;
+        morningTimeContainer.style.display = flag;
+    }
+}
+
+function CheckNotAvailableInput(flag,NotAvailableInput){
+    if (flag){
+        hideCount++;
+    }else{
+        if(NotAvailableInput.checked) {
+            hideCount--;
+        }
+    }
+
+    if (hideCount === 2) {
+        MealDetailContainer.style.display = "none";
+    }else{
+        MealDetailContainer.style.display = "flex";
+    }
 }

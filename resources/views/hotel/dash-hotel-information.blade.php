@@ -73,6 +73,15 @@
                             />
                         </x-dash-form-component>
 
+                        <x-dash-form-component title="夕食時間" flag={{true}}>
+                            <aside class="flex items-center gap-4">
+                                <x-dash-form-input type="time" timeId="startDinnerTime"/>
+                                <p>から</p>
+                                <x-dash-form-input type="time" timeId="endDinnerTime"/>
+                                <p>まで</p>
+                            </aside>
+                        </x-dash-form-component>
+
                         <x-dash-form-component title="朝食形式" flag={{true}}>
                             <p>※複数選択可</p>
                             <x-dash-form-checkbox name="morning_meal_option"
@@ -82,16 +91,7 @@
                             />
                         </x-dash-form-component>
 
-                        <x-dash-form-component title="夕食時間" flag={{false}}>
-                            <aside class="flex items-center gap-4">
-                                <x-dash-form-input type="time" timeId="startDinnerTime"/>
-                                <p>から</p>
-                                <x-dash-form-input type="time" timeId="endDinnerTime"/>
-                                <p>まで</p>
-                            </aside>
-                        </x-dash-form-component>
-
-                        <x-dash-form-component title="朝食時間" flag={{false}}>
+                        <x-dash-form-component title="朝食時間" flag={{true}}>
                             <aside class="flex items-center gap-4">
                                 <x-dash-form-input type="time" timeId="startMorningTime"/>
                                 <p>から</p>
@@ -100,35 +100,39 @@
                             </aside>
                         </x-dash-form-component>
 
-                        <x-dash-form-component title="食事会場" flag={{false}}>
-                            <article id="venue_container" class="flex flex-col justify-center items-center w-full gap-6">
-                                <aside class="flex items-center gap-4 w-full">
-                                    <x-dash-form-input type="text" title="会場名" />
-                                    <x-dash-form-input type="number" title="最大収容人数" />
-                                </aside>
-                                <div id="venue_memo_container" class="flex flex-col gap-2 w-full">
-                                    <p>※備考欄</p>
-                                    <x-dash-form-input type="text" title="例: 300名様以上は1会場2回転にて対応" />
-                                </div>
-                                <button id="add_venue_btn" type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md">
-                                    会場追加
-                                </button>
-                            </article>
-                        </x-dash-form-component>
+                        <div id="meal_detail_container" class="flex flex-col gap-4">
 
-                        <x-dash-form-component title="アレルギー対応" flag={{true}}>
-                            <x-dash-form-checkbox name="allergy"
-                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
-                                                  check={{false}}
-                            />
-                        </x-dash-form-component>
+                            <x-dash-form-component title="食事会場" flag={{true}}>
+                                <article id="venue_container" class="flex flex-col justify-center items-center w-full gap-6">
+                                    <aside class="flex items-center gap-4 w-full">
+                                        <x-dash-form-input type="text" title="会場名" />
+                                        <x-dash-form-input type="number" title="最大収容人数" />
+                                    </aside>
+                                    <div id="venue_memo_container" class="flex flex-col gap-2 w-full">
+                                        <p>※備考欄</p>
+                                        <x-dash-form-input type="text" title="例: 300名様以上は1会場2回転にて対応" />
+                                    </div>
+                                    <button id="add_venue_btn" type="button" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+                                        会場追加
+                                    </button>
+                                </article>
+                            </x-dash-form-component>
 
-                        <x-dash-form-component title="ハラル食対応" flag={{true}}>
-                            <x-dash-form-checkbox name="halal"
-                                                  :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
-                                                  check={{false}}
-                            />
-                        </x-dash-form-component>
+                            <x-dash-form-component title="アレルギー対応" flag={{true}}>
+                                <x-dash-form-checkbox name="allergy"
+                                                      :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
+                                                      check={{false}}
+                                />
+                            </x-dash-form-component>
+
+                            <x-dash-form-component title="ハラル食対応" flag={{true}}>
+                                <x-dash-form-checkbox name="halal"
+                                                      :dataArray="[['value' => 1, 'title' => '可'],['value' => 2, 'title' => '不可']]"
+                                                      check={{false}}
+                                />
+                            </x-dash-form-component>
+                        </div>
+
                     </article>
 
                     {{--宿泊条件--}}
