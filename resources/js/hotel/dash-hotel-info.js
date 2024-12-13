@@ -125,3 +125,27 @@ function CheckNotAvailableInput(flag,NotAvailableInput){
         MealDetailContainer.style.display = "flex";
     }
 }
+
+
+// レクリエーションのラジオボタンなど"有"をクリックしたときの処理
+function RadioBtnHandler(radio){
+    // ラジオボタン全体を取得
+    const RadioBtn = document.getElementsByClassName(radio+"_option");
+    const timeInput = document.getElementById(radio+"_start_time");
+
+    for (let i = 0; i < RadioBtn.length; i++) {
+        RadioBtn[i].addEventListener('change', () => {
+            // 1つ目のラジオボタンが選択されているかチェック
+            if (RadioBtn[i].value === '1' && RadioBtn[i].checked) {
+                timeInput.classList.remove('hidden');
+            } else {
+                timeInput.classList.add('hidden');
+            }
+        });
+    }
+}
+
+RadioBtnHandler('shop');//売店利用
+RadioBtnHandler('game');//ゲームセンター
+RadioBtnHandler('recreation');//レクリエーション
+RadioBtnHandler('meeting');//部屋長会議
