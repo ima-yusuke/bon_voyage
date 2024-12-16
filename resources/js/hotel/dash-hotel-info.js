@@ -126,7 +126,6 @@ function CheckNotAvailableInput(flag,NotAvailableInput){
     }
 }
 
-
 // レクリエーションのラジオボタンなど"有"をクリックしたときの処理
 function RadioBtnHandler(radio){
     // ラジオボタン全体を取得
