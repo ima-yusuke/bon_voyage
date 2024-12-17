@@ -9,6 +9,7 @@
                 <form class="flex flex-col gap-4">
                     <p class="border-b-2 border-solid border-gray-400 pb-2"><i class="fa-solid fa-sort pr-1"></i>並び替え</p>
                     <select>
+                        <option value="">選択してください</option>
                         <option value="0">実施日</option>
                         <option value="1">学校名</option>
                         <option value="2">人数</option>
@@ -84,7 +85,7 @@
                         <td class="text-center border border-gray-300">{{ $order["agent"] }}</td>
                         <td class="text-center border border-gray-300">{{ $order["status"] }}</td>
                         <td class="text-center border border-gray-300">
-                            <a href="{{ route('hotel.order', ['id' => $order["id"]]) }}" class="text-blue-500">詳細</a>
+                            <a href="{{ route('hotel.order.detail', ['id' => $order["id"]]) }}" class="text-blue-500">詳細</a>
                         </td>
                     </tr>
                 @endforeach

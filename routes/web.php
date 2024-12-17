@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelInformationController;
 use App\Http\Controllers\HotelOrderController;
+use App\Http\Controllers\SchoolCreateController;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SchoolCreateTravelController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,7 +28,20 @@ Route::middleware('auth')->group(function () {
 
     //宿泊施設受注学校
     Route::get("/dashboard/order",[HotelOrderController::class,"render"])->name("hotel.order");
-    Route::get('/dashboard/order-detail', [\App\Http\Controllers\HotelOrderController::class,"openDetail"])->name('openDetail');
+    Route::get('/dashboard/order/detail{id}', [\App\Http\Controllers\HotelOrderController::class,"show"])->name('hotel.order.detail');
+
+    //【旅行会社】
+
+    //学校登録
+    Route::get("/dashboard/school/create",[SchoolCreateController::class,"render"])->name("school.create");
+
+    //学校一覧
+    Route::get("/dashboard/school",[SchoolController::class,"render"])->name("school");
+
+    //学校詳細
+    Route::get('/dashboard/school/detail{id}', [SchoolController::class,"showDetail"])->name('tourist.school.detail');
+
+    Route::get('/dashboard/school/create/travel', [SchoolCreateTravelController::class,"render"])->name('tourist.school.create.travel');
 
 
 });

@@ -20,4 +20,16 @@
     </div>
 @elseif($type==="number")
     <input type="number" @isset($id) id="{{ $id }}" @endisset  class="w-full border border-solid border-gray-300 rounded-md p-2" placeholder="{{$title}}">
+@elseif($type==="date")
+    <div class="relative">
+        <input
+            id="{{$dateId}}"
+            type="date"
+            class="w-full border border-solid border-gray-300 rounded-md p-2 cursor-pointer"
+        />
+        <div
+            class="absolute inset-0 cursor-pointer"
+            onclick="document.getElementById('{{$dateId}}').showPicker()">
+        </div>
+    </div>
 @endif

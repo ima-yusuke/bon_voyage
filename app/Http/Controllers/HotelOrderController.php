@@ -24,4 +24,10 @@ class HotelOrderController extends Controller
         $orders = $this->orders;
         return view("hotel/dash-hotel-order",compact("orders"));
     }
+
+    public function show($id)
+    {
+        $order = collect($this->orders)->firstWhere('id', $id);
+        return view("hotel/dash-hotel-order-detail",compact("order"));
+    }
 }
