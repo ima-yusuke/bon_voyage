@@ -21,10 +21,10 @@ class SchoolController extends Controller
     ];
 
     public $travels =[
-        ["id"=>1,"agent"=>"JTB三重支店","leave_date"=>"2019-12-01","status"=>"精算済","direction"=>"東京","title"=>"2019-12/修旅","charge_person"=>"藤野"],
-        ["id"=>2,"agent"=>"KNT三重支店","leave_date"=>"2020-12-03","status"=>null,"direction"=>"北海道","title"=>"2020-12/合宿","charge_person"=>null],
-        ["id"=>3,"agent"=>"日本旅行津支店","leave_date"=>"2021-12-01","status"=>null,"direction"=>"北海道","title"=>"2021-12/修旅","charge_person"=>null],
-        ["id"=>4,"agent"=>"JTB三重支店","leave_date"=>"2022-12-02","status"=>"実施済","direction"=>"北海道","title"=>"2022-12/修旅","charge_person"=>"今井"],
+        ["id"=>1,"agent"=>"JTB三重支店","leave_date"=>"2019-12-01","status"=>"精算済","direction"=>"東京","title"=>"2019-12/修旅","charge_person"=>"藤野","name"=>"三重県立松阪高等学校"],
+        ["id"=>2,"agent"=>"KNT三重支店","leave_date"=>"2020-12-03","status"=>null,"direction"=>"北海道","title"=>"2020-12/合宿","charge_person"=>null,"name"=>"三重県立四日市高等学校"],
+        ["id"=>3,"agent"=>null,"leave_date"=>"2021-12-01","status"=>null,"direction"=>"北海道","title"=>"2021-12/修旅","charge_person"=>null,"name"=>"学校法人高田学苑高田中学校"],
+        ["id"=>4,"agent"=>"JTB三重支店","leave_date"=>"2022-12-02","status"=>"実施済","direction"=>"北海道","title"=>"2022-12/修旅","charge_person"=>"今井","name"=>"三重県立鈴鹿高等学校"],
     ];
 
     public function render(){
@@ -36,5 +36,11 @@ class SchoolController extends Controller
     {
         $travels = $this->travels;
         return view("tourist/dash-tourist-school-detail",compact("travels"));
+    }
+
+    public function showTravelList()
+    {
+        $travels = $this->travels;
+        return view("tourist/dash-tourist-travel-list",compact("travels"));
     }
 }

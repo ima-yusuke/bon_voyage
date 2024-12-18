@@ -17,8 +17,9 @@
                         <option value="4">代替食</option>
                         <option value="5">食事会場</option>
                         <option value="6">お部屋割</option>
-                        <option value="7">旅行会社</option>
-                        <option value="8">受注状態</option>"
+                        <option value="7">しおり</option>
+                        <option value="8">旅行会社</option>
+                        <option value="9">受注状態</option>"
                     </select>
                 </form>
 
@@ -43,6 +44,7 @@
                     <th class="border border-gray-300">代替食</th>
                     <th class="border border-gray-300">食事会場</th>
                     <th class="border border-gray-300">お部屋割</th>
+                    <th class="border border-gray-300">しおり</th>
                     <th class="border border-gray-300">旅行会社</th>
                     <th class="border border-gray-300">受注状態</th>
                     <th class="border border-gray-300">詳細</th>
@@ -77,6 +79,13 @@
                         </td>
                         <td class="text-center border border-gray-300">
                             @if($order["room"])
+                                ◯
+                            @else
+                                ×
+                            @endif
+                        </td>
+                        <td class="text-center border border-gray-300">
+                            @if($order["guide"])
                                 ◯
                             @else
                                 ×

@@ -4,6 +4,18 @@
 
             <h1 class="md:text-2xl">三重県立松阪高等学校</h1>
 
+            <x-dash-form-component title="担当者" flag={{false}}>
+                <select>
+                    <option value="">選択してください</option>
+                    <option value="0">鳥田</option>
+                    <option value="1">小林</option>
+                    <option value="2">野嵜</option>
+                    <option value="3">今井</option>
+                </select>
+            </x-dash-form-component>
+
+            <p class="text-red-600">旅行先を選んだら対象のホテルのみフィルターかける？</p>
+
             <x-dash-form-component title="旅行先" flag={{false}}>
                 <select>
                     <option value="">選択してください</option>
@@ -63,6 +75,22 @@
                 <x-dash-form-input type="date" dateId="arriveDate"/>
             </x-dash-form-component>
 
+            <p class="text-red-600">未定の場合未定？</p>
+            <x-dash-form-component title="宿泊施設" flag={{false}}>
+                <select>
+                    <option value="">選択してください</option>
+                    <option value="0">未定？</option>
+                    <option value="1">ホテルA</option>
+                    <option value="2">ホテルB</option>
+                    <option value="3">ホテルC</option>
+                    <option value="4">ホテルD</option>
+                    <option value="5">ホテルE</option>
+                </select>
+            </x-dash-form-component>
+
+            <x-dash-form-component title="仕様書" flag={{false}}>
+                <x-dash-form-input type="file" role="pdf"/>
+            </x-dash-form-component>
         </div>
     </div>
 </x-app-layout>

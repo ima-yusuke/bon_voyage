@@ -5,17 +5,31 @@
                 <a href="{{route('hotel.order')}}" class="bg-blue-500 px-4 py-2 rounded-lg text-white">一覧へ戻る</a>
             </div>
 
-            <p class="text-red-600">宿泊日のとこに連泊かどうか</p>
-            <x-dash-form-component title="宿泊日" flag={{false}}>
-                <p>{{$order["date"]}}</p>
+            <x-dash-form-component title="出発日" flag={{false}}>
+                <p>{{$order["leave_date"]}}</p>
             </x-dash-form-component>
 
             <x-dash-form-component title="学校名" flag={{false}}>
-                <p>{{$order["school"]}}</p>
+                <p>三重県立松阪高等学校</p>
+            </x-dash-form-component>
+
+            <x-dash-form-component title="担当者" flag={{false}}>
+                <p>今井</p>
+            </x-dash-form-component>
+
+            <x-dash-form-component title="方面" flag={{false}}>
+                <p>北海道</p>
+            </x-dash-form-component>
+
+            <x-dash-form-component title="宿泊施設" flag={{false}}>
+                <p>1泊目：札幌プリンスホテル / 1泊朝食付</p>
+                <p>2泊目：ホテルエミシア札幌 / 1泊2食付</p>
             </x-dash-form-component>
 
             <x-dash-form-component title="人数" flag={{false}}>
-                <p>{{$order["students"]}}</p>
+                <p>計320人</p>
+                <p>男180人</p>
+                <p>女140人</p>
             </x-dash-form-component>
 
             <x-dash-form-component title="アレルギーリスト" flag={{false}}>
@@ -48,6 +62,14 @@
                     <p>【新しいファイル】</p>
                     <input type="file" accept="application/pdf">
                 </div>
+            </x-dash-form-component>
+
+            <x-dash-form-component title="行程表" flag={{false}}>
+                <input type="file" accept="application/pdf">
+            </x-dash-form-component>
+
+            <x-dash-form-component title="仕様書" flag={{false}}>
+                <input type="file" accept="application/pdf">
             </x-dash-form-component>
         </div>
     </div>
