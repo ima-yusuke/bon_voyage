@@ -7,6 +7,7 @@ use App\Http\Controllers\HotelOrderController;
 use App\Http\Controllers\SchoolCreateController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SchoolCreateTravelController;
+use App\Http\Controllers\SchoolTravelDetailController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,9 +42,14 @@ Route::middleware('auth')->group(function () {
     //学校詳細
     Route::get('/dashboard/school/detail{id}', [SchoolController::class,"showDetail"])->name('tourist.school.detail');
 
+    //学校旅行作成
     Route::get('/dashboard/school/create/travel', [SchoolCreateTravelController::class,"render"])->name('tourist.school.create.travel');
 
+    //学校旅行詳細
+    Route::get('/dashboard/school/travel{id}', [SchoolTravelDetailController::class,"render"])->name('tourist.school.travel.detail');
 
+    //旅行一覧
+    Route::get('/dashboard/school/travel/list', [SchoolController::class,"showTravelList"])->name('tourist.school.travel.list');
 });
 
 require __DIR__.'/auth.php';
