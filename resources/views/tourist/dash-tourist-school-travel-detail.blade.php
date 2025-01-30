@@ -21,9 +21,10 @@
                 <p>北海道</p>
             </x-dash-form-component>
 
+            <p class="text-red-600">食事条件は項目分けて表示した方が良い？</p>
             <x-dash-form-component title="宿泊施設" flag={{false}}>
-                <p>1泊目：札幌プリンスホテル / 1泊朝食付</p>
-                <p>2泊目：ホテルエミシア札幌 / 1泊2食付</p>
+                <p>1泊目：札幌プリンスホテル / 1泊朝食付（夕食：無 / 朝食：ビュッフェ）</p>
+                <p>2泊目：ホテルエミシア札幌 / 1泊2食付（夕食：ビュッフェ / 朝食：お弁当）</p>
             </x-dash-form-component>
 
             <x-dash-form-component title="人数" flag={{false}}>

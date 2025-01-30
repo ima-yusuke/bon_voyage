@@ -1,9 +1,6 @@
 <x-app-layout>
     <div class="flex justify-center items-center w-full h-full">
         <div class="bg-white h-full w-[90%] md:w-[70%] my-10 px-8 md:px-14 py-14 rounded-lg flex flex-col gap-10">
-            <p>・並び替えでアレルギーなどは✗のがどこか探したいのでは？</p>
-            <p>・ぐるとらのようにカレンダー表示のが良い？</p>
-
             <article class="md:flex items-center gap-8">
                 {{--並び替え--}}
                 <form class="flex flex-col gap-4">

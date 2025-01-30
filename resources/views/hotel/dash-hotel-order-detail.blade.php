@@ -10,6 +10,10 @@
                 <p>{{$order["date"]}}</p>
             </x-dash-form-component>
 
+            <x-dash-form-component title="食事条件" flag={{false}}>
+                <p>1泊2食付（夕食：卓盛り / 朝食：バイキング）</p>
+            </x-dash-form-component>
+
             <x-dash-form-component title="学校名" flag={{false}}>
                 <p>{{$order["school"]}}</p>
             </x-dash-form-component>
@@ -48,6 +52,10 @@
                     <p>【新しいファイル】</p>
                     <input type="file" accept="application/pdf">
                 </div>
+            </x-dash-form-component>
+
+            <x-dash-form-component title="行程表" flag={{false}}>
+                <input type="file" accept="application/pdf">
             </x-dash-form-component>
         </div>
     </div>
